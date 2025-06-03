@@ -7,7 +7,7 @@ function App() {
   const fetchGreeting = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://100.25.217.223:5000/api/greeting');
+      const response = await fetch('http://100.25.217.223:5000/api/greetings');
       const data = await response.json();
       setGreeting(data.greeting);
     } catch (error) {
