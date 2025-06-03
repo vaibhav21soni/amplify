@@ -25,6 +25,10 @@ function App() {
     window.open('http://100.25.217.223:5000/api/items', '_blank');
   };
 
+  const openBackend = () => {
+    window.open('http://100.25.217.223:5000/api/greetings', '_blank');
+  };
+
   return (
     <div style={styles.container}>
       <h1>{greeting}</h1>
