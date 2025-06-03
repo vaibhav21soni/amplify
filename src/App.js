@@ -7,7 +7,7 @@ function App() {
   const fetchGreeting = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://100.25.217.223:5000/api/greetings');
+      const response = await fetch('http://100.25.217.223:5000/api/greeting');
       const data = await response.json();
       setGreeting(data.greeting);
     } catch (error) {
@@ -26,7 +26,7 @@ function App() {
   };
 
   const closeBackend = () => {
-    window.open('http://100.25.217.223:5000/api/greetings', '_blank');
+    window.open('http://100.25.217.223:5000/api/greeting', '_blank');
   };
 
   return (
