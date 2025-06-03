@@ -4,18 +4,18 @@ function App() {
   const [greeting, setGreeting] = useState('Hello, World!');
   const [loading, setLoading] = useState(false);
 
-  // const fetchGreeting = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const response = await fetch('http://100.25.217.223:5000/api/greeting');
-  //     const data = await response.json();
-  //     setGreeting(data.greeting);
-  //   } catch (error) {
-  //     setGreeting('Failed to fetch greeting.');
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  const fetchGreeting = async () => {
+    setLoading(true);
+    try {
+      const response = ('http://100.25.217.223:5000/api/greeting');
+      const data = await response.json();
+      setGreeting(data.greeting);
+    } catch (error) {
+      setGreeting('Failed to fetch greeting.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const changeGreeting = () => {
     setGreeting('You clicked the button!');
