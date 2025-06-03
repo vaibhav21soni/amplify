@@ -25,7 +25,7 @@ function App() {
     window.open('http://100.25.217.223:5000/api/items', '_blank');
   };
 
-  const openBackend = () => {
+  const closeBackend = () => {
     window.open('http://100.25.217.223:5000/api/greetings', '_blank');
   };
 
@@ -38,6 +38,7 @@ function App() {
           {loading ? 'Loading...' : 'Fetch Greeting from API'}
         </button>
         <button onClick={openBackend} style={styles.button}>Open Backend Link</button>
+        <button onClick={closeBackend} style={styles.button}>close Backend Link</button>
       </div>
     </div>
   );
