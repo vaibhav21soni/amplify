@@ -1,8 +1,7 @@
 # 🚀 React Greeting App
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/facebook/react/main/fixtures/attribute-behavior/public/react-logo.png" alt="React Logo" width="200" height="200">
-  <br>
+
   <br>
   
   ![React](https://img.shields.io/badge/React-19.1.0-61DAFB?style=for-the-badge&logo=react)
@@ -39,15 +38,7 @@
 
 ---
 
-## 🎮 Demo
 
-<div align="center">
-  <img src="https://via.placeholder.com/800x400?text=React+Greeting+App+Demo" alt="App Demo" width="800">
-</div>
-
-Try out the live demo: [React Greeting App](https://your-demo-link-here.com)
-
----
 
 ## 🚀 Getting Started
 
