@@ -1,24 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './App.css';
 
 function App() {
   const [greeting, setGreeting] = useState('Hello, World!');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    document.title = `Greeting: ${greeting}`;
+  }, [greeting]);
 
   const fetchGreeting = async () => {
     setLoading(true);
+    setError(null);
     try {
-      const response = await fetch ('http://100.25.217.223:5000/api/greeting');
+      const response = await fetch('http://100.25.217.223:5000/api/greeting');
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
       const data = await response.json();
       setGreeting(data.greeting);
     } catch (error) {
-      setGreeting('Failed to fetch greeting.');
+      console.error('Error fetching greeting:', error);
+      setError('Failed to fetch greeting. Please try again later.');
+      setGreeting('Error occurred');
     } finally {
       setLoading(false);
     }
   };
 
   const changeGreeting = () => {
-    setGreeting('You clicked the button!');
+    const greetings = [
+      'Hello there!',
+      'Welcome to our app!',
+      'Greetings, user!',
+      'Hi, nice to see you!',
+      'Welcome aboard!'
+    ];
+    const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+    setGreeting(randomGreeting);
   };
 
   const openBackend = () => {
@@ -30,36 +50,43 @@ function App() {
   };
 
   return (
-    <div style={styles.container}>
+    <div className="container">
       <h1>{greeting}</h1>
-      <div style={styles.buttonGroup}>
-        <button onClick={changeGreeting} style={styles.button}>Change Greeting</button>
-        <button onClick={fetchGreeting} style={styles.button}>
+      
+      {error && <p className="error-message">{error}</p>}
+      
+      <div className="button-group">
+        <button 
+          onClick={changeGreeting} 
+          className="button"
+        >
+          Change Greeting
+        </button>
+        
+        <button 
+          onClick={fetchGreeting} 
+          className={`button ${loading ? 'loading' : ''}`}
+          disabled={loading}
+        >
           {loading ? 'Loading...' : 'Fetch Greeting from API'}
         </button>
-        <button onClick={openBackend} style={styles.button}>Open Backend Link</button>
-        <button onClick={closeBackend} style={styles.button}>close Backend Link</button>
+        
+        <button 
+          onClick={openBackend} 
+          className="button"
+        >
+          Open Items API
+        </button>
+        
+        <button 
+          onClick={closeBackend} 
+          className="button"
+        >
+          Open Greeting API
+        </button>
       </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    fontFamily: 'Arial',
-    textAlign: 'center',
-    marginTop: '20%',
-    padding: '20px',
-  },
-  buttonGroup: {
-    marginTop: '20px',
-  },
-  button: {
-    padding: '10px 20px',
-    margin: '0 10px',
-    fontSize: '16px',
-    cursor: 'pointer',
-  }
-};
 
 export default App;
